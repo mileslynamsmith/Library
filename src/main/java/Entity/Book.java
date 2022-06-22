@@ -1,8 +1,17 @@
 package Entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@Entity
 public class Book {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
     private String author;
@@ -16,15 +25,7 @@ public class Book {
         this.setAuthor(author);
         this.setDescription(description);
     }
-
-    public Book(int id, String title, String author, String description) {
-        this.setId(id);
-        this.setTitle(title);
-        this.setAuthor(author);
-        this.setDescription(description);
-    }
-
-    
+    //getters and setters
     public int getId(){
         return id;
     }
@@ -60,8 +61,6 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", description='" + description + '\'' +
                 '}';
-
-    
     }
 }
 

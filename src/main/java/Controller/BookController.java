@@ -25,8 +25,13 @@ public class BookController {
             return bookRepository.findAll();
         }
 
-    @PostMapping("/books")
-        public void create(@RequestParam String title,
+        @PostMapping("/book/search")
+        public List<Book> search(@RequestBody Map<String, String> body){
+            String searchTerm = body.get("text");
+            return bookRepository.findByTitleAuthorDescription(searchTerm, searchTerm, searchTerm);
+        }
+        @PostMapping("/books")
+        public Book create(@RequestParam String title,
                             @RequestParam String author,
                             @RequestParam String description){
             return bookRepository.save(new Book(title, author, description));
@@ -44,7 +49,7 @@ public class BookController {
 
     @DeleteMapping("books/{id}")
     public boolean delete(@PathVariable int id){
-        BookRepository.deleteById(id);
+        bookRepository.deleteById(id);
         return true;
     }
     
