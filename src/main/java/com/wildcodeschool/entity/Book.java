@@ -1,4 +1,4 @@
-package Entity;
+package com.wildcodeschool.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

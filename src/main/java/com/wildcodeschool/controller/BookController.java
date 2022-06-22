@@ -1,14 +1,12 @@
-package Controller;
+package com.wildcodeschool.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import Entity.Book;
-import Repository.BookRepository;
-import com.wildcodeschool.*;
+import com.wildcodeschool.entity.Book;
+import com.wildcodeschool.repository.BookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +23,7 @@ public class BookController {
             return bookRepository.findAll();
         }
 
-        @PostMapping("/book/search")
+        @PostMapping("/books/search")
         public List<Book> search(@RequestBody Map<String, String> body){
             String searchTerm = body.get("text");
             return bookRepository.findByTitleAuthorDescription(searchTerm, searchTerm, searchTerm);
